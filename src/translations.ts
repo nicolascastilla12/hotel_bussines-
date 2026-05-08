@@ -1,0 +1,42 @@
+export const translations = {
+  en: {
+    title: 'Hotel Booking App',
+    location: 'Location:',
+    checkIn: 'Check-in:',
+    checkOut: 'Check-out:',
+    minPrice: 'Min Price:',
+    maxPrice: 'Max Price:',
+    search: 'Search',
+    perNight: 'per night',
+    bookNow: 'Book Now',
+    bookHotel: 'Book {name}',
+    checkInLabel: 'Check-in:',
+    checkOutLabel: 'Check-out:',
+    guests: 'Number of Guests:',
+    confirm: 'Confirm Booking',
+    cancel: 'Cancel',
+    bookingConfirmed: 'Booking confirmed!',
+    noHotels: 'No hotels found matching your criteria.',
+    language: 'Español'
+  },
+  es: {
+    title: 'Aplicación de Reservas de Hoteles',
+    location: 'Ubicación:',
+    checkIn: 'Check-in:',
+    checkOut: 'Check-out:',
+    minPrice: 'Precio Mínimo:',
+    maxPrice: 'Precio Máximo:',
+    search: 'Buscar',
+    perNight: 'por noche',
+    bookNow: 'Reservar Ahora',
+    bookHotel: 'Reservar {name}',
+    checkInLabel: 'Check-in:',
+    checkOutLabel: 'Check-out:',
+    guests: 'Número de Huéspedes:',
+    confirm: 'Confirmar Reserva',
+    cancel: 'Cancelar',
+    bookingConfirmed: '¡Reserva confirmada!',
+    noHotels: 'No se encontraron hoteles que coincidan con sus criterios.',
+    language: 'English'
+  }
+};
