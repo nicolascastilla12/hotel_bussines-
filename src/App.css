@@ -1,68 +1,121 @@
-.app {
-  font-family: Arial, sans-serif;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px;
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E2C97E;
+  --gold-dark: #A07830;
+  --black: #0A0A0A;
+  --black-soft: #111111;
+  --black-card: #1A1A1A;
+  --black-hover: #222222;
+  --gray-dark: #2A2A2A;
+  --gray-mid: #444444;
+  --gray-light: #888888;
+  --white: #FFFFFF;
+  --white-soft: #F5F2EC;
+  --border: rgba(201, 168, 76, 0.25);
+  --border-hover: rgba(201, 168, 76, 0.6);
 }
 
-main {
-  position: relative;
-  z-index: 1;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+}
+.app {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
 }
 
 header {
-  text-align: center;
-  margin-bottom: 20px;
-  position: relative;
-  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 0 0;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0 36px;
+  gap: 16px;
+  width: 100%;
+}
+
+.header-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
 header h1 {
-  margin: 0;
-  font-size: 2em;
-}
-
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 1.5em;
-  }
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8em;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
 }
 
 .language-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 8px 15px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 3px;
+  padding: 9px 18px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 2px;
   cursor: pointer;
-  font-size: 0.9em;
+  font-size: 0.85em;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.language-btn:hover {
+  background: var(--gold);
+  color: var(--black);
 }
 
 @media (max-width: 600px) {
-  .language-btn {
-    top: 5px;
-    right: 5px;
-    padding: 6px 10px;
-    font-size: 0.8em;
-  }
+  header h1 { font-size: 1.8em; }
+  .language-btn { padding: 6px 12px; font-size: 0.78em; }
 }
-
+/* ── SEARCH FORM ── */
 .search-form {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 15px;
-  margin-bottom: 30px;
-  padding: 20px;
-  border: 2px solid #007bff;
-  border-radius: 8px;
-  background-color: #f8f9fa;
-  box-sizing: border-box;
+  margin-bottom: 40px;
+  padding: 28px;
+  background: var(--black-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
   position: relative;
   z-index: 10;
+}
+
+.search-form::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
 .search-form div {
@@ -74,23 +127,25 @@ header h1 {
 
 .search-form label {
   margin-bottom: 8px;
-  font-weight: bold;
-  color: #333;
-  font-size: 0.95em;
+  font-weight: 500;
+  color: var(--gold);
+  font-size: 0.78em;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 .search-form input {
-  padding: 12px;
-  border: 2px solid #0066cc;
-  border-radius: 5px;
-  font-size: 1em;
-  box-sizing: border-box;
-  background-color: white;
-  color: #333;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-size: 0.95em;
+  background-color: var(--gray-dark);
+  color: var(--white);
   width: 100%;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
 }
 
-/* Remove number spinner arrows */
 .search-form input[type="number"]::-webkit-outer-spin-button,
 .search-form input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -103,120 +158,55 @@ header h1 {
 
 .search-form input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
-  background-color: #f0f7ff;
+  border-color: var(--gold);
+  background-color: var(--black-hover);
+  box-shadow: 0 0 0 1px var(--gold-dark);
 }
 
 .search-form input::placeholder {
-  color: #999;
-}
-
-.search-form input::placeholder {
-  color: #999 !important;
+  color: var(--gray-light) !important;
 }
 
 .search-form button {
   grid-column: 1 / -1;
-  padding: 12px 20px;
-  background-color: #007bff;
-  color: white;
+  padding: 13px 20px;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+  color: var(--black);
   border: none;
-  border-radius: 5px;
+  border-radius: 2px;
   cursor: pointer;
-  font-size: 1em;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  font-size: 0.9em;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
   margin-top: 5px;
 }
 
 .search-form button:hover {
-  background-color: #0056b3;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
 }
 
 @media (max-width: 768px) {
   .search-form {
     grid-template-columns: repeat(2, 1fr);
-    padding: 15px;
+    padding: 20px;
     gap: 12px;
   }
-
-  .search-form button {
-    grid-column: 1 / -1;
-  }
+  .search-form button { grid-column: 1 / -1; }
 }
 
 @media (max-width: 480px) {
   .search-form {
     grid-template-columns: 1fr;
-    padding: 12px;
-    gap: 10px;
-  }
-
-  .search-form label {
-    font-size: 0.9em;
-  }
-
-  .search-form input {
-    padding: 10px !important;
-    font-size: 0.95em !important;
-  }
-
-  .search-form button {
-    padding: 10px 15px;
-    font-size: 0.95em;
-  }
-}
-
-.search-form button {
-  grid-column: 1 / -1;
-  padding: 12px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1em;
-  font-weight: bold;
-  transition: background-color 0.3s;
-  margin-top: 5px;
-}
-
-.search-form button:hover {
-  background-color: #0056b3;
-}
-
-@media (max-width: 768px) {
-  .search-form {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 15px;
+    padding: 16px;
     gap: 10px;
   }
 }
 
-@media (max-width: 480px) {
-  .search-form {
-    grid-template-columns: 1fr;
-    padding: 12px;
-    gap: 8px;
-  }
-
-  .search-form label {
-    font-size: 0.85em;
-  }
-
-  .search-form input {
-    padding: 8px;
-    font-size: 0.9em;
-  }
-
-  .search-form button {
-    padding: 10px 15px;
-    font-size: 0.9em;
-  }
-}
-
-/* DatePicker Styles - FIXED */
+/* ── DATEPICKER ── */
 .react-datepicker-wrapper {
   width: 100%;
   position: relative;
@@ -231,21 +221,21 @@ header h1 {
 
 .react-datepicker__input-container input {
   width: 100%;
-  padding: 12px;
-  border: 2px solid #0066cc;
-  border-radius: 4px;
-  font-size: 1em;
-  box-sizing: border-box;
-  background-color: white;
-  color: #333;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-size: 0.95em;
+  background-color: var(--gray-dark);
+  color: var(--white);
   cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
 }
 
 .react-datepicker__input-container input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
-  background-color: #f0f7ff;
+  border-color: var(--gold);
+  background-color: var(--black-hover);
 }
 
 .react-datepicker-popper {
@@ -260,61 +250,56 @@ header h1 {
 }
 
 .react-datepicker {
-  font-family: Arial, sans-serif;
-  border: 3px solid #007bff;
-  border-radius: 10px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
-  background-color: white;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  background-color: var(--black-card);
   z-index: 10001 !important;
   width: 100%;
   position: relative;
 }
 
 .react-datepicker__header {
-  background-color: #007bff;
-  color: white;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--black);
   border-radius: 4px 4px 0 0;
   border-bottom: none;
   padding: 20px;
   text-align: center;
 }
 
-.react-datepicker__header__text {
-  color: white;
-  font-weight: bold;
-  font-size: 1.2em;
-  margin: 0;
-}
-
 .react-datepicker__current-month {
-  color: white;
-  font-weight: bold;
-  font-size: 1.2em;
+  color: var(--black);
+  font-weight: 700;
+  font-size: 1.1em;
   margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
 }
 
 .react-datepicker__day-names {
-  background-color: #f5f5f5;
-  border-bottom: 2px solid #ddd;
+  background-color: var(--gray-dark);
+  border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-around;
   padding: 10px 5px;
 }
 
 .react-datepicker__day-name {
-  color: #333;
-  font-weight: bold;
+  color: var(--gold);
+  font-weight: 600;
   width: 40px;
   height: 40px;
   line-height: 40px;
   text-align: center;
-  font-size: 0.85em;
+  font-size: 0.8em;
+  letter-spacing: 1px;
 }
 
 .react-datepicker__week {
   display: flex;
   justify-content: space-around;
-  padding: 5px;
+  padding: 3px 5px;
 }
 
 .react-datepicker__day {
@@ -322,45 +307,40 @@ header h1 {
   height: 40px;
   line-height: 40px;
   text-align: center;
-  color: #333;
-  border-radius: 4px;
+  color: var(--white);
+  border-radius: 2px;
   cursor: pointer !important;
   transition: all 0.2s ease;
-  font-size: 0.95em;
+  font-size: 0.9em;
 }
 
 .react-datepicker__day:hover {
-  background-color: #e3f2fd;
-  color: #007bff;
-  font-weight: bold;
+  background-color: var(--gold-dark);
+  color: var(--black);
 }
 
 .react-datepicker__day--selected,
 .react-datepicker__day--in-selecting-range,
 .react-datepicker__day--in-range {
-  background-color: #007bff;
-  color: white;
-  font-weight: bold;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--black);
+  font-weight: 700;
 }
 
 .react-datepicker__day--keyboard-selected {
-  background-color: #b3d9ff;
-  color: #333;
+  background-color: var(--gray-dark);
+  color: var(--gold);
 }
 
 .react-datepicker__day--today {
   font-weight: bold;
-  border: 2px solid #28a745;
-  background-color: #f0fff0;
+  border: 1px solid var(--gold);
+  color: var(--gold);
 }
 
-.react-datepicker__day--outside-month {
-  color: #ccc;
-  cursor: default;
-}
-
+.react-datepicker__day--outside-month,
 .react-datepicker__day--disabled {
-  color: #ccc;
+  color: var(--gray-mid);
   cursor: default;
 }
 
@@ -370,20 +350,11 @@ header h1 {
   position: absolute;
 }
 
-.react-datepicker__navigation--previous {
-  left: 20px;
-  width: 25px;
-  height: 25px;
-}
-
-.react-datepicker__navigation--next {
-  right: 20px;
-  width: 25px;
-  height: 25px;
-}
+.react-datepicker__navigation--previous { left: 20px; width: 25px; height: 25px; }
+.react-datepicker__navigation--next { right: 20px; width: 25px; height: 25px; }
 
 .react-datepicker__navigation-icon::before {
-  border-color: white;
+  border-color: var(--black);
   border-width: 2px 2px 0 0;
   content: '';
   display: block;
@@ -392,104 +363,79 @@ header h1 {
 }
 
 .react-datepicker__navigation--previous:hover,
-.react-datepicker__navigation--next:hover {
-  opacity: 0.7;
-}
+.react-datepicker__navigation--next:hover { opacity: 0.7; }
 
-.react-datepicker__month-container {
-  float: none;
-  width: 100%;
-}
+.react-datepicker__month-container { float: none; width: 100%; }
+.react-datepicker__month { margin: 10px; text-align: center; }
+.react-datepicker__day, .react-datepicker__navigation { pointer-events: auto !important; }
 
-.react-datepicker__month {
-  margin: 10px;
-  text-align: center;
-}
-
-.react-datepicker__footer {
-  text-align: center;
-  border-top: 1px solid #ddd;
-  padding: 10px;
-}
-
-/* Asegurar que todo sea clickeable */
-.react-datepicker__day,
-.react-datepicker__navigation {
-  pointer-events: auto !important;
-}
-
-@media (max-width: 768px) {
-  .search-form {
-    grid-template-columns: 1fr;
-    padding: 15px;
-    gap: 12px;
-  }
-
-  .search-form button {
-    grid-column: 1;
-  }
-}
-
-@media (max-width: 480px) {
-  .search-form {
-    padding: 10px;
-    gap: 10px;
-  }
-
-  .search-form label {
-    font-size: 0.9em;
-  }
-
-  .search-form input {
-    padding: 8px;
-    font-size: 0.95em;
-  }
-
-  .search-form button {
-    padding: 10px 15px;
-    font-size: 0.95em;
-  }
-}
-
+/* ── HOTEL LIST ── */
 .hotel-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
   margin-top: 20px;
 }
 
+/* ── HOTEL CARD ── */
 .hotel-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  text-align: center;
-  transition: box-shadow 0.3s;
-  box-sizing: border-box;
+  background: var(--black-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.hotel-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 1;
 }
 
 .hotel-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(201, 168, 76, 0.08);
+  transform: translateY(-4px);
+}
+
+.hotel-card:hover::before {
+  opacity: 1;
 }
 
 .hotel-card img {
   width: 100%;
-  height: 200px;
+  height: 210px;
   object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 12px;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.hotel-card:hover img {
+  transform: scale(1.03);
 }
 
 .hotel-card h3 {
-  margin: 12px 0 8px;
-  color: #333;
-  font-size: 1.1em;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15em;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
 }
 
 .hotel-card p {
-  margin: 8px 0;
-  color: #666;
-  font-size: 0.95em;
-  line-height: 1.4;
+  margin: 6px 0;
+  font-size: 0.9em;
+  color: var(--gray-light);
+  line-height: 1.5;
 }
 
 .hotel-card ul {
@@ -497,121 +443,117 @@ header h1 {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 6px;
-  margin: 12px 0;
+  margin: 12px 0 16px;
 }
 
 .hotel-card li {
-  background: #e3f2fd;
-  color: #1976d2;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 0.85em;
+  background: rgba(201, 168, 76, 0.08);
+  color: var(--gold);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  padding: 4px 10px;
+  border-radius: 2px;
+  font-size: 0.78em;
+  letter-spacing: 0.5px;
+  font-weight: 500;
 }
 
+.hotel-card > * + * {
+  padding-left: 0;
+}
+
+.hotel-card > h3,
+.hotel-card > p,
+.hotel-card > ul,
+.hotel-card > button {
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.hotel-card > h3 { padding-top: 18px; }
+.hotel-card > ul { padding-left: 18px; padding-right: 18px; }
+
 .hotel-card button {
-  margin-top: 12px;
-  padding: 10px 18px;
-  background-color: #28a745;
-  color: white;
+  margin-top: auto;
+  padding: 13px 18px;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--black);
   border: none;
-  border-radius: 4px;
+  border-radius: 0;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
   width: 100%;
-  box-sizing: border-box;
 }
 
 .hotel-card button:hover {
-  background-color: #218838;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  box-shadow: 0 -4px 20px rgba(201, 168, 76, 0.2);
 }
 
 @media (max-width: 768px) {
   .hotel-list {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-  }
-
-  .hotel-card {
-    padding: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
   }
 }
 
 @media (max-width: 600px) {
-  .hotel-list {
-    grid-template-columns: 1fr;
-  }
-
-  .hotel-card {
-    padding: 12px;
-  }
-
-  .hotel-card img {
-    height: 180px;
-  }
-
-  .hotel-card h3 {
-    font-size: 1em;
-  }
-
-  .hotel-card p {
-    font-size: 0.9em;
-  }
+  .hotel-list { grid-template-columns: 1fr; }
+  .hotel-card img { height: 190px; }
 }
 
 @media (max-width: 480px) {
-  .hotel-list {
-    gap: 12px;
-  }
-
-  .hotel-card {
-    padding: 10px;
-  }
-
-  .hotel-card img {
-    height: 150px;
-  }
-
-  .hotel-card button {
-    padding: 8px 12px;
-    font-size: 0.9em;
-  }
+  .hotel-list { gap: 14px; }
+  .hotel-card img { height: 170px; }
 }
 
+/* ── MODAL ── */
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   padding: 20px;
-  box-sizing: border-box;
   overflow-y: auto;
+  backdrop-filter: blur(4px);
 }
 
+/* ── BOOKING FORM ── */
 .booking-form {
-  background: white;
-  padding: 25px;
-  border-radius: 8px;
+  background: var(--black-card);
+  border: 1px solid var(--border);
+  padding: 32px;
+  border-radius: 4px;
   width: 90%;
   max-width: 500px;
-  box-sizing: border-box;
   max-height: 90vh;
   overflow-y: auto;
+  position: relative;
+}
+
+.booking-form::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
 .booking-form h2 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #333;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 24px;
+  color: var(--white);
   font-size: 1.5em;
+  letter-spacing: 1px;
 }
 
 .booking-form form div {
@@ -621,100 +563,98 @@ header h1 {
 .booking-form label {
   display: block;
   margin-bottom: 8px;
-  color: #333;
-  font-weight: bold;
-  font-size: 0.95em;
+  color: var(--gold);
+  font-weight: 500;
+  font-size: 0.78em;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 .booking-form input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1em;
-  box-sizing: border-box;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-size: 0.95em;
+  background: var(--gray-dark);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
 }
 
 .booking-form input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold-dark);
+  background: var(--black-hover);
 }
 
-.booking-form .react-datepicker-wrapper {
-  width: 100%;
-}
+.booking-form .react-datepicker-wrapper { width: 100%; }
 
 .booking-form .react-datepicker__input-container input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1em;
-  box-sizing: border-box;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-size: 0.95em;
+  background: var(--gray-dark);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
 }
 
 .booking-form .react-datepicker__input-container input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: var(--gold);
 }
 
 .booking-form button {
-  padding: 11px 18px;
+  padding: 11px 22px;
   margin-right: 10px;
   margin-bottom: 10px;
   border: none;
-  border-radius: 4px;
+  border-radius: 2px;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 0.95em;
-  transition: background-color 0.3s;
+  font-weight: 600;
+  font-size: 0.82em;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
 }
 
 .booking-form button[type="submit"] {
-  background-color: #28a745;
-  color: white;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--black);
 }
 
 .booking-form button[type="submit"]:hover {
-  background-color: #218838;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
 }
 
 .booking-form button[type="button"] {
-  background-color: #6c757d;
-  color: white;
+  background: transparent;
+  color: var(--gray-light);
+  border: 1px solid var(--gray-mid);
 }
 
 .booking-form button[type="button"]:hover {
-  background-color: #5a6268;
+  border-color: var(--gray-light);
+  color: var(--white);
 }
 
 @media (max-width: 768px) {
-  .booking-form {
-    padding: 20px;
-    width: 95%;
-    max-width: none;
-  }
-
-  .booking-form h2 {
-    font-size: 1.3em;
-  }
+  .booking-form { padding: 24px; width: 95%; }
+  .booking-form h2 { font-size: 1.3em; }
 }
 
 @media (max-width: 480px) {
-  .booking-form {
-    padding: 15px;
-    width: 98%;
-  }
-
-  .booking-form h2 {
-    font-size: 1.1em;
-  }
-
-  .booking-form button {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 8px;
-  }
+  .booking-form { padding: 18px; width: 98%; }
+  .booking-form h2 { font-size: 1.1em; }
+  .booking-form button { width: 100%; margin-right: 0; margin-bottom: 8px; }
+}
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--black);
 }

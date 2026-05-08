@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import SearchForm from './components/SearchForm';
 import HotelList from './components/HotelList';
@@ -15,7 +15,7 @@ function AppContent() {
     checkIn: null,
     checkOut: null,
     minPrice: 0,
-    maxPrice: 2000000
+    maxPrice: 10000000
   });
   const [bookingHotel, setBookingHotel] = useState<Hotel | null>(null);
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -41,8 +41,14 @@ function AppContent() {
   return (
     <div className="app">
       <header>
-        <h1>{t('title')}</h1>
-        <button onClick={toggleLanguage} className="language-btn">{t('language')}</button>
+        <div className="header-top">
+          <button onClick={toggleLanguage} className="language-btn">{t('language')}</button>
+        </div>
+        <div className="header-content">
+          <div className="header-line" />
+          <h1>{t('title')}</h1>
+          <div className="header-line" />
+        </div>
       </header>
       <main>
         <SearchForm onSearch={handleSearch} />
