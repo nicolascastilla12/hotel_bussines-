@@ -8,15 +8,20 @@ interface HotelCardProps {
 }
 
 const HotelCard: React.FC<HotelCardProps> = ({ hotel, onBook }) => {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+
+  const name = language === 'en' && hotel.nameEn ? hotel.nameEn : hotel.name;
+  const description = language === 'en' && hotel.descriptionEn ? hotel.descriptionEn : hotel.description;
+  const location = language === 'en' && hotel.locationEn ? hotel.locationEn : hotel.location;
+
   return (
     <div className="hotel-card">
-      <img src={hotel.image} alt={hotel.name} />
-      <h3>{hotel.name}</h3>
-      <p>{hotel.location}</p>
-      <p>Price: {hotel.price.toLocaleString()} COP {t('perNight')}</p>
-      <p>Rating: {hotel.rating}/5</p>
-      <p>{hotel.description}</p>
+      <img src={hotel.image} alt={name} />
+      <h3>{name}</h3>
+      <p>{location}</p>
+      <p>{t('pricePer')} {hotel.price.toLocaleString('es-CO')} COP {t('perNight')}</p>
+      <p>{t('rating')} {hotel.rating}/5</p>
+      <p>{description}</p>
       <ul>
         {hotel.amenities.map((amenity, index) => (
           <li key={index}>{amenity}</li>

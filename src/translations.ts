@@ -17,7 +17,15 @@ export const translations = {
     cancel: 'Cancel',
     bookingConfirmed: 'Booking confirmed!',
     noHotels: 'No hotels found matching your criteria.',
-    language: 'Español'
+    language: 'Español',
+    pricePer: 'Price:',
+    rating: 'Rating:',
+    bookingSummary: 'Booking Summary',
+    pricePerNight: 'Price per night',
+    nights: 'Nights',
+    guests2: 'Guests',
+    total: 'TOTAL',
+    reset: 'Clear'
   },
   es: {
     title: 'Aplicación de Reservas de Hoteles',
@@ -37,6 +45,14 @@ export const translations = {
     cancel: 'Cancelar',
     bookingConfirmed: '¡Reserva confirmada!',
     noHotels: 'No se encontraron hoteles que coincidan con sus criterios.',
-    language: 'English'
+    language: 'English',
+    pricePer: 'Precio:',
+    rating: 'Calificación:',
+    bookingSummary: 'Resumen de tu reserva',
+    pricePerNight: 'Precio por noche',
+    nights: 'Noches',
+    guests2: 'Huéspedes',
+    total: 'TOTAL',
+    reset: 'Limpiar'
   }
 };

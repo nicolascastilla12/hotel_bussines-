@@ -1,11 +1,14 @@
 export interface Hotel {
   id: number;
   name: string;
+  nameEn?: string;
   location: string;
+  locationEn?: string;
   price: number;
   rating: number;
   image: string;
   description: string;
+  descriptionEn?: string;
   amenities: string[];
 }
 

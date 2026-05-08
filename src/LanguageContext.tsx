@@ -3,12 +3,14 @@ import { translations } from './translations';
 
 type Language = 'en' | 'es';
 
+// En la interfaz agrega:
 interface LanguageContextType {
-  language: Language;
+  language: Language;       // ya está
   toggleLanguage: () => void;
   t: (key: string, params?: Record<string, string>) => string;
 }
 
+// Y en useTranslation asegúrate de retornar language:
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const useTranslation = () => {
